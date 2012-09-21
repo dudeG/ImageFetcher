@@ -15,8 +15,7 @@ mImageFetcher.setImageFadeIn(false);
  * load image include loadImage and load ThumnailImage
 
 ```
-mImageFetcher.loadThumbnailImage(speakerImageUrl, speakerImageView,
-                        R.drawable.person_image_empty);
+mImageFetcher.loadThumbnailImage(speakerImageUrl, speakerImageView, R.drawable.person_image_empty);
 ```
  * flush close cache
 
