@@ -33,4 +33,4 @@ public void onDestroy() {
     mImageFetcher.closeCache();
 }
 ```
-
+!https://github.com/guamier/ImageFetcher/raw/master/screen1.png!
