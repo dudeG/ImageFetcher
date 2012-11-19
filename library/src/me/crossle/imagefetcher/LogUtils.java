@@ -12,12 +12,12 @@
  * limitations under the License.
  */
 
-package com.crossle.imagefetcher;
+package me.crossle.imagefetcher;
 
 
 import android.util.Log;
 
-import com.vitamio.imagefetcher.BuildConfig;
+import me.crossle.imagefetcher.BuildConfig;
 
 /**
  * Helper methods that make logging more consistent throughout the app.

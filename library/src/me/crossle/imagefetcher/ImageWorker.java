@@ -13,8 +13,11 @@
  * limitations under the License.
  */
 
-package com.crossle.imagefetcher;
+package me.crossle.imagefetcher;
 
+
+import static me.crossle.imagefetcher.LogUtils.LOGD;
+import static me.crossle.imagefetcher.LogUtils.makeLogTag;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -29,17 +32,12 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.widget.ImageView;
 
-import com.vitamio.imagefetcher.BuildConfig;
-
 import java.lang.ref.WeakReference;
 import java.util.Hashtable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static com.crossle.imagefetcher.LogUtils.LOGD;
-import static com.crossle.imagefetcher.LogUtils.makeLogTag;
 
 /**
  * This class wraps up completing some arbitrary long running work when loading a bitmap to an
@@ -422,6 +420,7 @@ public abstract class ImageWorker {
      * @param imageView
      * @param bitmap
      */
+    @SuppressWarnings("deprecation")
     private void setImageBitmap(ImageView imageView, Bitmap bitmap) {
         if (mFadeInBitmap) {
             // Use TransitionDrawable to fade in
@@ -430,7 +429,7 @@ public abstract class ImageWorker {
                             new ColorDrawable(android.R.color.transparent),
                             new BitmapDrawable(mResources, bitmap)
                     });
-            imageView.setBackground(imageView.getDrawable());
+            imageView.setBackgroundDrawable(imageView.getDrawable());
             imageView.setImageDrawable(td);
             td.startTransition(FADE_IN_TIME);
         } else {

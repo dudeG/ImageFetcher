@@ -15,8 +15,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.crossle.imagefetcher.ImageFetcher;
-import com.crossle.imagefetcher.UIUtils;
+import me.crossle.imagefetcher.ImageFetcher;
+import me.crossle.imagefetcher.UIUtils;
+
 
 public class MainActivity extends FragmentActivity {
 
@@ -132,7 +133,7 @@ class PhotoAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        String speakerImageUrl = "https://vplayer.net/uploads/video/poster/500f7b80760c7fa271000001/thumb_p480747492.jpg";
+        String speakerImageUrl = "https://raw.github.com/guamier/ImageFetcher/master/images.jpg";
 
         mImageFetcher.loadImage(speakerImageUrl, viewHolder.icon,
                 R.drawable.ic_launcher);

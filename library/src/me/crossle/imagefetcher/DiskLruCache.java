@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.crossle.imagefetcher;
+package me.crossle.imagefetcher;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;

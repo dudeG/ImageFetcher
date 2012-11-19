@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.crossle.imagefetcher;
+package me.crossle.imagefetcher;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -32,9 +32,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.crossle.imagefetcher.LogUtils.LOGD;
-import static com.crossle.imagefetcher.LogUtils.LOGE;
-import static com.crossle.imagefetcher.LogUtils.makeLogTag;
+import static me.crossle.imagefetcher.LogUtils.LOGD;
+import static me.crossle.imagefetcher.LogUtils.LOGE;
+import static me.crossle.imagefetcher.LogUtils.makeLogTag;
 
 /**
  * A subclass of {@link ImageWorker} that fetches images from a URL.

@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.crossle.imagefetcher;
+package me.crossle.imagefetcher;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
@@ -34,9 +34,9 @@ import java.io.OutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static com.crossle.imagefetcher.LogUtils.LOGD;
-import static com.crossle.imagefetcher.LogUtils.LOGE;
-import static com.crossle.imagefetcher.LogUtils.makeLogTag;
+import static me.crossle.imagefetcher.LogUtils.LOGD;
+import static me.crossle.imagefetcher.LogUtils.LOGE;
+import static me.crossle.imagefetcher.LogUtils.makeLogTag;
 
 /**
  * This class holds our bitmap caches (memory and disk).

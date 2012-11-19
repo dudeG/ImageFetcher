@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.crossle.imagefetcher;
+package me.crossle.imagefetcher;
 
 
 import android.annotation.TargetApi;
@@ -35,7 +35,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vitamio.imagefetcher.BuildConfig;
+import me.crossle.imagefetcher.BuildConfig;
 
 /**
  * An assortment of UI helpers.
