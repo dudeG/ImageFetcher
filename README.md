@@ -2,23 +2,23 @@ ImageFetcher Library
 =========================
 
 This folder contains the main library which should be linked against as an
-Android library project in your application.
-It's used LruCache, Asynchronous load image.
+Android library project in your application, it's backport iosched and add load image from local.
+It's used LruCache, Asynchronous load remote and local image.
 
 Useage
 -------
- * init ImageFetcher
+ * Init ImageFetcher
 
 ```java
 ImageFetcher mImageFetcher = UIUtils.getImageFetcher(getActivity());
 mImageFetcher.setImageFadeIn(false);
 ```
- * load image include loadImage and load ThumnailImage
+ * Load image include loadImage and load ThumnailImage
 
 ```java
 mImageFetcher.loadThumbnailImage(speakerImageUrl, speakerImageView, R.drawable.person_image_empty);
 ```
- * flush close cache
+ * Flush close cache
 
 ```java
 @Override
@@ -33,7 +33,7 @@ public void onDestroy() {
     mImageFetcher.closeCache();
 }
 ```
- * options, you can load image when listview SCROLL_STATE_IDLE
+ * Options, you can load image when listview SCROLL_STATE_IDLE
 
 ```java
  @Override
