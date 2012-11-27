@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -33,7 +34,7 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-    public static class ArrayListFragment extends ListFragment {
+    public static class ArrayListFragment extends ListFragment implements AbsListView.OnScrollListener {
 
         ImageFetcher mImageFetcher;
 
@@ -58,7 +59,6 @@ public class MainActivity extends FragmentActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            // TODO Auto-generated method stub
             return super.onCreateView(inflater, container, savedInstanceState);
         }
 
@@ -68,7 +68,18 @@ public class MainActivity extends FragmentActivity {
             setListAdapter(new PhotoAdapter(getActivity(), mImageFetcher));
 
         }
-
+        
+        @Override
+        public void onScrollStateChanged(AbsListView listView, int scrollState) {
+            // Pause disk cache access to ensure smoother scrolling
+            if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING ||
+                    scrollState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                mImageFetcher.setPauseWork(true);
+            } else {
+                mImageFetcher.setPauseWork(false);
+            }
+        }
+        
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
             Log.i("FragmentList", "Item clicked: " + id);
@@ -84,6 +95,11 @@ public class MainActivity extends FragmentActivity {
         public void onDestroy() {
             super.onDestroy();
             mImageFetcher.closeCache();
+        }
+
+				@Override
+        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+	        
         }
     }
 
@@ -107,7 +123,7 @@ class PhotoAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return 100;
+        return 38;
     }
 
     public Object getItem(int position) {
@@ -133,9 +149,8 @@ class PhotoAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        String speakerImageUrl = "https://raw.github.com/guamier/ImageFetcher/master/images.jpg";
 
-        mImageFetcher.loadImage(speakerImageUrl, viewHolder.icon,
+        mImageFetcher.loadImage(Images.imageThumbUrls[position], viewHolder.icon,
                 R.drawable.ic_launcher);
 
         return convertView;
