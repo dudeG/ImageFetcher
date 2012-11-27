@@ -33,6 +33,20 @@ public void onDestroy() {
     mImageFetcher.closeCache();
 }
 ```
+ * options, you can load image when listview SCROLL_STATE_IDLE
+
+```java
+ @Override
+public void onScrollStateChanged(AbsListView listView, int scrollState) {
+    // Pause disk cache access to ensure smoother scrolling
+    if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING ||
+            scrollState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+        mImageFetcher.setPauseWork(true);
+    } else {
+        mImageFetcher.setPauseWork(false);
+    }
+}
+```
 License
 =======
 
