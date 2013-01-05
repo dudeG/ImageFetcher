@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import me.crossle.imagefetcher.ImageFetcher;
-import me.crossle.imagefetcher.UIUtils;
 
 
 public class MainActivity extends FragmentActivity {
@@ -51,7 +50,7 @@ public class MainActivity extends FragmentActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            mImageFetcher = UIUtils.getImageFetcher(getActivity());
+            mImageFetcher = new ImageFetcher(this.getActivity(), 32);
             mImageFetcher.setImageFadeIn(false);
 
         }
@@ -150,8 +149,7 @@ class PhotoAdapter extends BaseAdapter {
         }
 
 
-        mImageFetcher.loadImage(Images.imageThumbUrls[position], viewHolder.icon,
-                R.drawable.ic_launcher);
+        mImageFetcher.loadImage(Images.imageThumbUrls[position], viewHolder.icon);
 
         return convertView;
     }
