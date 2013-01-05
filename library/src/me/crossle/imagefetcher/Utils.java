@@ -19,11 +19,16 @@ package me.crossle.imagefetcher;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.StrictMode;
+import android.support.v4.app.FragmentActivity;
+
+import me.crossle.imagefetcher.ImageCache.ImageCacheParams;
 
 /**
  * Class containing some static utility methods.
  */
 public class Utils {
+	
+	private static final String IMAGE_CACHE_DIR = "imageFetcher";
 	private Utils() {
 	};
 
@@ -62,5 +67,16 @@ public class Utils {
 
 	public static boolean hasJellyBean() {
 		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+	}
+	
+	public static ImageFetcher getImageFetcher(final FragmentActivity activity) {
+		ImageCacheParams cacheParams = new ImageCacheParams(activity, IMAGE_CACHE_DIR);
+		// Set memory cache to 25% of mem class
+		cacheParams.setMemCacheSizePercent(activity, 0.25f);
+		// The ImageFetcher takes care of loading images into our ImageView children asynchronously
+		ImageFetcher imageFetcher = new ImageFetcher(activity);
+		imageFetcher.setImageFadeIn(true);
+		imageFetcher.addImageCache(activity.getSupportFragmentManager(), cacheParams);
+		return imageFetcher;
 	}
 }

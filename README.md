@@ -11,7 +11,6 @@ Useage
 
 ```java
 ImageFetcher mImageFetcher = UIUtils.getImageFetcher(getActivity());
-mImageFetcher.setImageFadeIn(false);
 ```
  * Load image include loadImage and load ThumnailImage
 
